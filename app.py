@@ -53,8 +53,10 @@ selected_movie = st.selectbox(
 )
 
 if st.button("Recommend"):
-    recommendations = recommend(selected_movie)
+    recommended_movies = recommend(selected_movie)
 
-    st.subheader("Recommended Movies:")
-    for movie in recommendations:
-        st.write(movie)
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+    for i, col in enumerate([col1, col2, col3, col4, col5]):
+        with col:
+            st.text(recommended_movies[i])
